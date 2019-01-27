@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, Platform } from 'react-native';
 
 const { width: WIDTH } = Dimensions.get('window');
 export const IMAGE_HEIGHT = window.width / 2;
@@ -92,7 +92,11 @@ const mystyle = StyleSheet.create({
     btnLg: {
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 20,
+        ...Platform.select({
+            android: {
+                padding: 20,
+            }
+        }),
         width: 250,
         height: 45,
         backgroundColor: "#105ab5",

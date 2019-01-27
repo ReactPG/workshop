@@ -11,11 +11,12 @@ import {
 } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import mycss from './components/component.js';
+import mycss from './components/component';
 import logo from './img/umoneyL.png';
 import la from './img/la.png';
 import eng from './img/eng.png';
-import mystyle from './components/component.js';
+import mystyle from './components/component';
+import Button from './components/button';
 
 
 export default class MyTextInput extends Component {
@@ -71,10 +72,10 @@ export default class MyTextInput extends Component {
                     // }
                     />
                     {
-                        this.state.error_status == false ? (
+                        this.state.error_status == false ? (    
                             <Text style={mycss.errorMessage}>
                                 * Please enter Phone No.
-                        </Text>
+                            </Text>
                         ) : null
                     }
                     <CheckBox
@@ -95,9 +96,7 @@ export default class MyTextInput extends Component {
                         </TouchableHighlight>
                     </View>
                     <View style={mycss.btnview}>
-                        <TouchableHighlight style={mycss.btnLg} onPress={this.Clickme}>
-                            <Text style={mycss.btnLg_Text}>Sign In</Text>
-                        </TouchableHighlight>
+                        <Button style={mycss.btnLg} onPress={this.Clickme} text="Game" styleText={mycss.btnLg_Text}/>
                     </View>
                 </View>
 
