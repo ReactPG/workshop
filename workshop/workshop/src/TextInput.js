@@ -7,19 +7,22 @@ import {
     Image,
     TouchableHighlight,
     StatusBar,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    AsyncStorage,
 } from 'react-native';
 import { CheckBox } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import mycss from './components/component';
 import logo from './img/umoneyL.png';
 import la from './img/la.png';
 import eng from './img/eng.png';
 import mystyle from './components/component';
 import Button from './components/button';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 
 export default class MyTextInput extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -29,15 +32,17 @@ export default class MyTextInput extends Component {
         }
     }
 
-    Clickme = () => {
+    Clickme = async () => {
         const { enter_text } = this.state;
-        if (enter_text.trim() != 0) {
+        if (enter_text.trim() != 0 && enter_text.trim() == 9) {
             this.setState({ enter_text: enter_text, error_status: true });
+            await AsyncStorage.setItem('userToken', 'abc');
+            this.props.navigation.navigate('Home');
         } else {
             this.setState({ enter_text: enter_text, error_status: false });
         }
         if (enter_text == "") {
-            Alert.alert("Please enter Phone No");
+            Alert.alert("Please enter Phone No 9");
             return;
         }
         Alert.alert("Hello Number : " + this.state.enter_text);
